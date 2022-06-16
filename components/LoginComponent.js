@@ -32,11 +32,14 @@ const useStyles = makeStyles({
         zIndex:"1"
     },
     blob:{
-        transform:"scale(1.25) translate(-100px, -200px)",
+        transform:"scale(1.25) translate(-600px, -1200px)",
         position:"absolute",
         ['@media (max-width:900px)']:{
             width:"400px",
-            transform:"scale(2) translate(-40px, -40px)"
+            transform:"scale(2) translate(-40px, -700px)"
+        },
+        ['@media (max-width:500px)']:{
+            transform:"scale(2) translate(-40px, -600px)"
         }
     }
 },{ name: "MuiExample_Component" })
