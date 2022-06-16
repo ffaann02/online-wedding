@@ -32,12 +32,14 @@ const useStyles = makeStyles({
         zIndex:"1"
     },
     blob:{
-        width:"800px",
+        transform:"scale(1.25) translate(-600px, -1200px)",
         position:"absolute",
-        left:"0",
-        top:"0",
         ['@media (max-width:900px)']:{
             width:"400px",
+            transform:"scale(2) translate(-40px, -700px)"
+        },
+        ['@media (max-width:500px)']:{
+            transform:"scale(2) translate(-40px, -600px)"
         }
     }
 },{ name: "MuiExample_Component" })
@@ -101,7 +103,7 @@ export default function Login(){
                 </Grid>
             </Grid>
            {/*<img src={"/flatIcon/heart.png"} className={classes.miniHeart}/>*/}
-           <img className={classes.blob} src={"/blob.png"}/>
+           <img className={classes.blob} src={"/blob.svg"}/>
         </Box>
     )
 }
