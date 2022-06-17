@@ -17,3 +17,20 @@ a {
 * {
   box-sizing: border-box;
 }
+#userHistory::-webkit-scrollbar-track
+{
+	background-color: #ECE4DB;
+}
+
+#userHistory::-webkit-scrollbar
+{
+	width: 8px;
+	background-color: #F5F5F5;
+}
+
+#userHistory::-webkit-scrollbar-thumb
+{
+	background-color: #F08080;
+	border: none;
+  border-radius: 4px;
+}
