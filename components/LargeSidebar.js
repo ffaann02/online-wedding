@@ -44,8 +44,7 @@ const DashboardList = styled(Box)({
     borderRadius:"4px",
     cursor:"pointer"
 })
-
-export default function HomeComponent(){
+export default function LargeSidebar(){
     const classes = useStyles();
     const [isOpen,setIsOpen] = useState(false)
     const [DashboardUserInfo,setDashboardUserInfo] = useState(false)
@@ -54,11 +53,7 @@ export default function HomeComponent(){
     const [DashboardList3,setDashboardList3] = useState(false)
     const [DashboardHistory,setDashboardHistory] = useState(false)
     return(
-        <Box sx={{overflow: "hidden",backgroundColor:"#F8EDEB"}}>
-            <Drawer variant='temporary' open={isOpen} classes={{paper: classes.box}} onBackdropClick={()=>{setIsOpen(false)}}></Drawer>
-            <Grid container sx={{padding:{lg:"calc((100vh - 640px) / 2) calc((100vw - 1300px) / 2)",
-            md:"calc((100vh - 640px) / 2) calc((100vw - 1024px) / 2)",sm:"0",xs:"0"},minHeight:"100vh"}}>
-                <Grid item lg={3} md={3} sm={3} xs={12} sx={{display:{lg:"block",md:"block",sm:"none",xs:"none"}}}>
+        <Grid item lg={3} md={3} sm={3} xs={12} sx={{display:{lg:"block",md:"block",sm:"none",xs:"none"}}}>
                     <Box sx={{width:"100%",height:"100%"}}>
                         <Box sx={{display:{lg:"flex",md:"block"},justifyContent:"space-between"}}>
                             <Typography variant="h6" sx={{fontWeight:"600",marginLeft:{lg:"0",md:"14px"}}}>Username</Typography>
@@ -180,12 +175,5 @@ export default function HomeComponent(){
                         </Box>
                     </Box>
                 </Grid>
-                <Box sx={{width:"100%",height:"50px",display:{lg:"none",md:"none",sm:"none",xs:"block"},backgroundColor:"#FEC5BB"}}>
-                    <MenuIcon sx={{fontSize:"40px",marginTop:"4px",marginLeft:"10px",color:"#F08080",cursor:"pointer"}}
-                    onClick={()=>setIsOpen(prev=>!prev)}
-                    />
-                </Box>
-            </Grid>
-        </Box>
     )
 }
