@@ -11,6 +11,7 @@ import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import SourceIcon from '@mui/icons-material/Source';
 import MonetizationOnIcon from '@mui/icons-material/MonetizationOn';
 import CardGiftcardIcon from '@mui/icons-material/CardGiftcard';
+import Link from 'next/link'
 const useStyles = makeStyles({
     dashboardIcon:{
         width:"50px",
@@ -45,7 +46,9 @@ const useStyles = makeStyles({
     weddingCake:{
         width:"100%",
         position:"absolute",
-        bottom:"20px"
+        bottom:"20px",
+        zIndex:"1",
+        opacity:"50%"
     }
 },{ name: "MuiExample_Component" })
 
@@ -62,7 +65,7 @@ const LogoutButton = styled(Button)({
     }
 })
 
-export default function MobileTopbar(){
+export default function MobileSidebar(){
     const classes = useStyles();
     const [isOpen,setIsOpen] = useState(false)
     const [DashboardUserInfo,setDashboardUserInfo] = useState(false)
@@ -87,10 +90,12 @@ export default function MobileTopbar(){
                 <LogoutButton variant="contained">ออกจากระบบ</LogoutButton>
             </Box>
             <Box sx={{padding:"10px 10px 0 20px"}}>
-                <Box sx={{display:"flex",width:"100%",height:"60px",cursor:"pointer"}}>
+                <Link href="/profile">
+                <Box sx={{display:"flex",width:"100%",height:"60px",cursor:"pointer"}} onClick={()=>{setIsOpen(false)}}>
                     <FontAwesomeIcon icon={faUser} className={classes.mobileSidebarIcon}/>
                     <Typography variant="h6" sx={{fontSize:"20px",fontWeight:"300",marginTop:"12px",marginLeft:"20px"}}>บัญชีผู้ใช้งาน</Typography>
                 </Box>
+                </Link>
                 <Box sx={{display:"flex",width:"100%",height:"60px",cursor:"pointer"}} onClick={()=>{setWeddingListToggle(prev=>!prev)}}>
                     <FontAwesomeIcon icon={faHeart} className={classes.mobileSidebarIcon}/>
                     <Typography variant="h6" sx={{fontSize:"20px",fontWeight:"300",marginTop:"12px",marginLeft:"20px",display:"flex"}}>
@@ -100,25 +105,45 @@ export default function MobileTopbar(){
                 </Box>
                 {weddingListToggle?
                 <Box>
-                    <Box sx={{display:"flex",width:"100%",height:"40px",padding:"0 40px",cursor:"pointer"}}>
+                    <Link href="/wedding-info">
+                    <Box sx={{display:"flex",width:"100%",height:"40px",padding:"0 40px",cursor:"pointer"}} onClick={()=>{
+                        setIsOpen(false)
+                        setWeddingListToggle(false)
+                        }}>
                         <SourceIcon sx={{color:"#f55c7a"}}/>
                         <Typography variant="a"sx={{marginLeft:"10px",marginTop:"2px"}}>ข้อมูลทั่วไป</Typography>
                     </Box>
-                    <Box sx={{display:"flex",width:"100%",height:"40px",padding:"0 40px",cursor:"pointer"}}>
+                    </Link>
+                    <Link href="/money">
+                    <Box sx={{display:"flex",width:"100%",height:"40px",padding:"0 40px",cursor:"pointer"}} onClick={()=>{
+                        setIsOpen(false)
+                        setWeddingListToggle(false)
+                        }}>
                         <MonetizationOnIcon sx={{color:"#f55c7a"}}/>
                         <Typography variant="a"sx={{marginLeft:"10px",marginTop:"2px"}}>เงินใส่ซอง</Typography>
                     </Box>
-                    <Box sx={{display:"flex",width:"100%",height:"40px",padding:"0 40px",cursor:"pointer"}}>
+                    </Link>
+                    <Link href="/wish">
+                    <Box sx={{display:"flex",width:"100%",height:"40px",padding:"0 40px",cursor:"pointer"}} onClick={()=>{
+                        setIsOpen(false)
+                        setWeddingListToggle(false)
+                        }}>
                         <CardGiftcardIcon sx={{color:"#f55c7a"}}/>
                         <Typography variant="a"sx={{marginLeft:"10px",marginTop:"2px"}}>การ์ดอวยพร</Typography>
                     </Box>
+                    </Link>
                 </Box>
                 
                 :""}
-                <Box sx={{display:"flex",width:"100%",height:"60px",cursor:"pointer"}}>
+                <Link href="/history">
+                <Box sx={{display:"flex",width:"100%",height:"60px",cursor:"pointer",zIndex:"3",position:"relative"}} onClick={()=>{
+                        setIsOpen(false)
+                        setWeddingListToggle(false)
+                        }}>
                     <FontAwesomeIcon icon={faHistory} className={classes.mobileSidebarIcon}/>
                     <Typography variant="h6" sx={{fontSize:"20px",fontWeight:"300",marginTop:"12px",marginLeft:"20px"}}>ประวัติการใช้งาน</Typography>
                 </Box>
+                </Link>
             </Box>
             <img src="/wedding-cake.jpg" className={classes.weddingCake}/>
         </Drawer>
