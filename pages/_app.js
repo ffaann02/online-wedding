@@ -6,7 +6,7 @@ import { makeStyles } from '@mui/styles'
 import { useState } from "react";
 import LargeSidebar from '../components/LargeSidebar';
 import SmallSidebar from '../components/SmallSidebar';
-import MobileTopbar from '../components/MobileTopbar';
+import MobileSidebar from '../components/MobileSidebar';
 const useStyles = makeStyles({
   dashboardIcon:{
       width:"50px",
@@ -60,7 +60,7 @@ function MyApp({ Component, pageProps }) {
       md:"calc((100vh - 640px) / 2) calc((100vw - 1024px) / 2)",sm:"0",xs:"0"},minHeight:"100vh"}}>
         <LargeSidebar/>
         <SmallSidebar/>
-        <MobileTopbar/>
+        <MobileSidebar/>
         <Component {...pageProps} />
       </Grid>
   </Box>

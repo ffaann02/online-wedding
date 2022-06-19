@@ -3,6 +3,7 @@ import { Box } from "@mui/system";
 import { makeStyles } from '@mui/styles'
 import { useState } from "react";
 import MenuIcon from '@mui/icons-material/Menu';
+import Link from 'next/link'
 const useStyles = makeStyles({
     dashboardIcon:{
         width:"50px",
@@ -60,6 +61,7 @@ export default function LargeSidebar(){
                             <LogoutButton variant="contained">ออกจากระบบ</LogoutButton>
                         </Box>
                         <Typography variant="h6" sx={{fontSize:"14px",fontWeight:"600",marginLeft:"10px",marginTop:"20px"}}>บัญชีผู้ใช้งาน</Typography>
+                        <Link href="/profile">
                         <Box sx={{marginTop:"10px"}}>
                             <DashboardList sx={{backgroundColor:DashboardUserInfo?"":"#FCD5CE"}}
                             onClick={()=>setDashboardUserInfo(prev=>{
@@ -83,7 +85,9 @@ export default function LargeSidebar(){
                                 </Box>
                             </DashboardList>
                         </Box>
+                        </Link>
                         <Typography variant="h6" sx={{fontSize:"14px",fontWeight:"600",marginLeft:"10px",marginTop:"20px"}}>ข้อมูลงานแต่ง</Typography>
+                        <Link href="/wedding-info">
                         <Box sx={{marginTop:"10px"}}>
                             <DashboardList sx={{backgroundColor:DashboardList1?"":"#FCD5CE"}}
                             onClick={()=>setDashboardList1(prev=>{
@@ -98,7 +102,7 @@ export default function LargeSidebar(){
                                 }
                             })}>
                                 {DashboardList1? <Box sx={{height:"100%",width:"10px",backgroundColor:"#F08080"}}></Box>:""}
-                                <Box >
+                                <Box>
                                     <img className={classes.dashboardIcon} src="/flatIcon/wedding-rings.png"/>
                                 </Box>
                                 <Box sx={{display:"flex",flexDirection:"column",marginTop:"8px",marginLeft:"10px"}}>
@@ -107,6 +111,8 @@ export default function LargeSidebar(){
                                 </Box>
                             </DashboardList>
                         </Box>
+                        </Link>
+                        <Link href="/money">
                         <Box sx={{marginTop:"10px"}}>
                             <DashboardList sx={{backgroundColor:DashboardList2?"":"#FCD5CE"}}
                             onClick={()=>setDashboardList2(prev=>{
@@ -130,6 +136,8 @@ export default function LargeSidebar(){
                                 </Box>
                             </DashboardList>
                         </Box>
+                        </Link>
+                        <Link href="/wish">
                         <Box sx={{marginTop:"10px"}}>
                             <DashboardList sx={{backgroundColor:DashboardList3?"":"#FCD5CE"}} 
                             onClick={()=>setDashboardList3(prev=>{
@@ -153,6 +161,7 @@ export default function LargeSidebar(){
                                 </Box>
                             </DashboardList>
                         </Box>
+                        </Link>
                         <Typography variant="h6" sx={{fontSize:"14px",fontWeight:"600",marginLeft:"10px",marginTop:"20px"}}>ประวัติการใช้งาน</Typography>
                         <Box id="userHistory"
                         sx={{height:"200px",width:"100%",backgroundColor:"#FCD5CE",borderRadius:"4px",overflow:"hidden",overflowY:"scroll"}}>

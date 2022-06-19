@@ -2,6 +2,7 @@ import { Button, Grid, Typography,styled, Divider,Drawer} from "@mui/material";
 import { Box } from "@mui/system";
 import { makeStyles } from '@mui/styles'
 import { useState } from "react";
+import Link from 'next/link'
 
 const useStyles = makeStyles({
     dashboardIcon:{
@@ -38,6 +39,7 @@ export default function SmallSidebar(){
                     <img src="/flatIcon/wedding-ring (1).png" className={classes.logoIcon}/>
                     <Divider sx={{marginTop:"10px"}}/>
                     <Box sx={{height:"50vh",marginTop:"20px"}}>
+                        <Link href="/profile">
                         <Box sx={{padding:"10px",backgroundColor:DashboardUserInfo?"#F8AD9D":""}}
                         onClick={()=>setDashboardUserInfo(prev=>{
                             if(prev==false){
@@ -53,6 +55,8 @@ export default function SmallSidebar(){
                         })}>
                             <img src="/flatIcon/user (2).png" className={classes.smalSidebarIcon}/>
                         </Box>
+                        </Link>
+                        <Link href="/wedding-info">
                         <Box sx={{padding:"10px",backgroundColor:DashboardList1?"#F8AD9D":""}}
                         onClick={()=>setDashboardList1(prev=>{
                             if(prev==false){
@@ -68,6 +72,8 @@ export default function SmallSidebar(){
                         })}>
                             <img src="/flatIcon/wedding-rings.png" className={classes.smalSidebarIcon}/>
                         </Box>
+                        </Link>
+                        <Link href="/money">
                         <Box sx={{padding:"10px",backgroundColor:DashboardList2?"#F8AD9D":""}}
                         onClick={()=>setDashboardList2(prev=>{
                             if(prev==false){
@@ -83,6 +89,8 @@ export default function SmallSidebar(){
                         })}>
                             <img src="/flatIcon/money-bag.png" className={classes.smalSidebarIcon}/>
                         </Box>
+                        </Link>
+                        <Link href="/wish">
                         <Box sx={{padding:"10px",backgroundColor:DashboardList3?"#F8AD9D":""}}
                         onClick={()=>setDashboardList3(prev=>{
                             if(prev==false){
@@ -98,6 +106,8 @@ export default function SmallSidebar(){
                         })}>
                             <img src="/flatIcon/wish-list.png" className={classes.smalSidebarIcon}/>
                         </Box>
+                        </Link>
+                        <Link href="/history">
                         <Box sx={{padding:"10px",backgroundColor:DashboardHistory?"#F8AD9D":""}}
                         onClick={()=>setDashboardHistory(prev=>{
                             if(prev==false){
@@ -113,6 +123,7 @@ export default function SmallSidebar(){
                         })}>
                             <img src="/flatIcon/stopwatch.png" className={classes.smalSidebarIcon}/>
                         </Box>
+                        </Link>
                     </Box>
                 </Grid>
     )
