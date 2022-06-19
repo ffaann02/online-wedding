@@ -19,7 +19,7 @@ const useStyles = makeStyles({
         cursor:"pointer"
     },
     box:{
-        backgroundColor:"#FCD5CE",
+        backgroundColor:"white",
         width:"80%",
     }
 },{ name: "MuiExample_Component" })
