@@ -3,10 +3,10 @@ import Head from 'next/head'
 import { Button, Grid, Typography,styled, Divider,Drawer, MobileStepper} from "@mui/material";
 import { Box } from "@mui/system";
 import { makeStyles } from '@mui/styles'
-import { useState } from "react";
 import LargeSidebar from '../components/LargeSidebar';
 import SmallSidebar from '../components/SmallSidebar';
 import MobileSidebar from '../components/MobileSidebar';
+import React, { useState } from 'react';
 const useStyles = makeStyles({
   dashboardIcon:{
       width:"50px",
@@ -49,6 +49,11 @@ const DashboardList = styled(Box)({
   cursor:"pointer"
 })
 function MyApp({ Component, pageProps }) {
+  const [selectList,setSelectList] = useState("")
+
+  const Check=(getSidebar)=>{
+    setSelectList(getSidebar)
+  }
   return(
   <Box sx={{overflow: "hidden",backgroundColor:"#F8EDEB"}}>
     <Head>
@@ -58,9 +63,17 @@ function MyApp({ Component, pageProps }) {
       </Head>
       <Grid container sx={{padding:{lg:"calc((100vh - 640px) / 2) calc((100vw - 1300px) / 2)",
       md:"calc((100vh - 640px) / 2) calc((100vw - 1024px) / 2)",sm:"0",xs:"0"},minHeight:"100vh"}}>
-        <LargeSidebar/>
-        <SmallSidebar/>
-        <MobileSidebar/>
+        <LargeSidebar
+          Check={Check}
+          selectList={selectList}
+        />
+        <SmallSidebar
+          Check={Check}
+          selectList={selectList}
+        />
+        <MobileSidebar
+          Check={Check}
+        />
         <Component {...pageProps} />
       </Grid>
   </Box>
