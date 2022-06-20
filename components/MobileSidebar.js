@@ -1,7 +1,7 @@
 import { Button, Grid, Typography,styled, Divider,Drawer, Card} from "@mui/material";
 import { Box } from "@mui/system";
 import { makeStyles } from '@mui/styles'
-import { useState } from "react";
+import React,{ useState,useEffect } from "react";
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -65,7 +65,7 @@ const LogoutButton = styled(Button)({
     }
 })
 
-export default function MobileSidebar(){
+export default function MobileSidebar(props){
     const classes = useStyles();
     const [isOpen,setIsOpen] = useState(false)
     const [DashboardUserInfo,setDashboardUserInfo] = useState(false)
