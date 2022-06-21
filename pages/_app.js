@@ -62,7 +62,7 @@ function MyApp({ Component, pageProps }) {
         <link rel="icon" href="/flatIcon/wedding-ring.png" />
       </Head>
       <Grid container sx={{padding:{lg:"calc((100vh - 640px) / 2) calc((100vw - 1300px) / 2)",
-      md:"calc((100vh - 640px) / 2) calc((100vw - 1024px) / 2)",sm:"0",xs:"0"},minHeight:"100vh"}}>
+      md:"calc((100vh - 640px) / 2) calc((100vw - 1024px) / 2)",sm:"0",xs:"0"},minHeight:"100%"}}>
         <LargeSidebar
           Check={Check}
           selectList={selectList}
