@@ -7,6 +7,7 @@ import LargeSidebar from '../components/LargeSidebar';
 import SmallSidebar from '../components/SmallSidebar';
 import MobileSidebar from '../components/MobileSidebar';
 import React, { useState } from 'react';
+import {useRouter} from "next/router"
 const useStyles = makeStyles({
   dashboardIcon:{
       width:"50px",
@@ -49,8 +50,9 @@ const DashboardList = styled(Box)({
   cursor:"pointer"
 })
 function MyApp({ Component, pageProps }) {
+  const router = useRouter();
   const [selectList,setSelectList] = useState("")
-
+  console.log(router.pathname)
   const Check=(getSidebar)=>{
     setSelectList(getSidebar)
   }
@@ -63,10 +65,10 @@ function MyApp({ Component, pageProps }) {
       </Head>
       <Grid container sx={{padding:{lg:"calc((100vh - 640px) / 2) calc((100vw - 1300px) / 2)",
       md:"calc((100vh - 640px) / 2) calc((100vw - 1024px) / 2)",sm:"0",xs:"0"},minHeight:"100%"}}>
-        <LargeSidebar
+        {router.pathname === ("/login") || router.pathname ===("/register") ? false : true && <LargeSidebar
           Check={Check}
           selectList={selectList}
-        />
+        />}
         <SmallSidebar
           Check={Check}
           selectList={selectList}
