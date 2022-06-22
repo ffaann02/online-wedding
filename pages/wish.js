@@ -16,7 +16,7 @@ const EditButton = styled(Button)({
 
 export default function Wish() {
     return (
-        <Grid item lg={9} md={9} sm={11} xs={12} sx={{ height: { lg: "100%", md: "100%", sm: "100%", xs: "90vh" } }}>
+        <Grid item lg={9} md={9} sm={11} xs={12} sx={{ height: { lg: "100%", md: "100%", sm: "100vh", xs: "100vh" } }}>
             <Box sx={{ width: "100%", height: "100%", padding: { lg: "0 40px 0 140px", sm: "0" }, marginTop: "80px" }}>
                 
                 <Box sx={{
