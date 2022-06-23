@@ -26,7 +26,14 @@ const useStyles = makeStyles({
   box:{
       backgroundColor:"#FCD5CE",
       width:"80%",
-  }
+  },
+  backgroundLiquid:{
+    position:"absolute",
+    zIndex:"0",
+    opacity:"75%",
+    width:"100%",
+    height:"100%"
+}
 },{ name: "MuiExample_Component" })
 
 const LogoutButton = styled(Button)({
@@ -50,6 +57,7 @@ const DashboardList = styled(Box)({
   cursor:"pointer"
 })
 function MyApp({ Component, pageProps }) {
+  const classes = useStyles();
   const router = useRouter();
   const [selectList,setSelectList] = useState("")
   console.log(router.pathname)
@@ -67,7 +75,7 @@ function MyApp({ Component, pageProps }) {
       || router.pathname ===("/register") 
       ? false : true 
       && {lg:router.pathname !==("/events") && "calc((100vh - 640px) / 2) calc((100vw - 1300px) / 2)",
-      md:"calc((100vh - 640px) / 2) calc((100vw - 1024px) / 2)",sm:"0",xs:"0"},minHeight:"100%"}}>
+      md: router.pathname !==("/events") && "calc((100vh - 640px) / 2) calc((100vw - 1024px) / 2)",sm:"0",xs:"0"},minHeight:"100%"}}>
         {router.pathname === ("/login") || router.pathname ===("/register") || router.pathname ===("/events") ? false : true && <LargeSidebar
           Check={Check}
           selectList={selectList}
@@ -80,6 +88,7 @@ function MyApp({ Component, pageProps }) {
           Check={Check}
         />}
         <Component {...pageProps} />
+        
       </Grid>
   </Box>
   )
