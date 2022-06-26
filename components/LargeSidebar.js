@@ -1,8 +1,9 @@
-import { Button, Grid, Typography,styled, Divider,Drawer} from "@mui/material";
+import { Button, Grid, Typography,styled, Divider,Drawer, Select} from "@mui/material";
 import { Box } from "@mui/system";
-import { makeStyles } from '@mui/styles'
-import { useState } from "react";
+import { makeStyles, propsToClassKey } from '@mui/styles'
+import { useEffect, useState } from "react";
 import MenuIcon from '@mui/icons-material/Menu';
+import Link from 'next/link'
 const useStyles = makeStyles({
     dashboardIcon:{
         width:"50px",
@@ -44,7 +45,26 @@ const DashboardList = styled(Box)({
     borderRadius:"4px",
     cursor:"pointer"
 })
-export default function LargeSidebar(){
+
+
+export default function LargeSidebar(props){
+    useEffect(()=>{
+        if(props.selectList==="user"){
+            SelectUser();
+        }
+        if(props.selectList==="list1"){
+            SelectList1();
+        }
+        if(props.selectList==="list2"){
+            SelectList2();
+        }
+        if(props.selectList==="list3"){
+            SelectList3();
+        }
+        if(props.selectList==="history"){
+            SelectHistory();
+        }
+    })
     const classes = useStyles();
     const [isOpen,setIsOpen] = useState(false)
     const [DashboardUserInfo,setDashboardUserInfo] = useState(false)
@@ -52,6 +72,71 @@ export default function LargeSidebar(){
     const [DashboardList2,setDashboardList2] = useState(false)
     const [DashboardList3,setDashboardList3] = useState(false)
     const [DashboardHistory,setDashboardHistory] = useState(false)
+    
+
+    const SelectUser=()=>{
+        setDashboardUserInfo(prev=>{
+            if(prev==false){
+                setDashboardList1(false)
+                setDashboardList2(false)
+                setDashboardList3(false)
+                props.Check("user")
+                return true
+            }
+            else{
+                return true
+            }
+    })
+    }
+    const SelectList1=()=>{
+        setDashboardList1(prev=>{
+            if(prev==false){
+                setDashboardList2(false)
+                setDashboardList3(false)
+                setDashboardUserInfo(false)
+                props.Check("list1")
+                return true
+            }
+            else{
+                return true
+            }
+        })
+    }
+    const SelectList2=()=>{
+        setDashboardList2(prev=>{
+            if(prev==false){
+                setDashboardList1(false)
+                setDashboardList3(false)
+                setDashboardUserInfo(false)
+                props.Check("list2")
+                return true
+            }
+            else{
+                return true
+            }
+        })
+    }
+    const SelectList3=()=>{
+        setDashboardList3(prev=>{
+            if(prev==false){
+                setDashboardList1(false)
+                setDashboardList2(false)
+                setDashboardUserInfo(false)
+                props.Check("list3")
+                return true
+            }
+            else{
+                return true
+            }
+        })
+    }
+    const SelectHistory=()=>{
+        setDashboardList1(false)
+        setDashboardList2(false)
+        setDashboardList3(false)
+        setDashboardUserInfo(false)
+    }
+
     return(
         <Grid item lg={3} md={3} sm={3} xs={12} sx={{display:{lg:"block",md:"block",sm:"none",xs:"none"}}}>
                     <Box sx={{width:"100%",height:"100%"}}>
@@ -60,19 +145,10 @@ export default function LargeSidebar(){
                             <LogoutButton variant="contained">ออกจากระบบ</LogoutButton>
                         </Box>
                         <Typography variant="h6" sx={{fontSize:"14px",fontWeight:"600",marginLeft:"10px",marginTop:"20px"}}>บัญชีผู้ใช้งาน</Typography>
+                        <Link href="/profile">
                         <Box sx={{marginTop:"10px"}}>
                             <DashboardList sx={{backgroundColor:DashboardUserInfo?"":"#FCD5CE"}}
-                            onClick={()=>setDashboardUserInfo(prev=>{
-                                if(prev==false){
-                                    setDashboardList1(false)
-                                    setDashboardList2(false)
-                                    setDashboardList3(false)
-                                    return true
-                                }
-                                else{
-                                    return "HELLO"
-                                }
-                            })}>
+                            onClick={SelectUser}>
                                 {DashboardUserInfo? <Box sx={{height:"100%",width:"10px",backgroundColor:"#F08080"}}></Box>:""}
                                 <Box>
                                     <img className={classes.dashboardIcon} src="/flatIcon/user (2).png"/>
@@ -83,22 +159,14 @@ export default function LargeSidebar(){
                                 </Box>
                             </DashboardList>
                         </Box>
+                        </Link>
                         <Typography variant="h6" sx={{fontSize:"14px",fontWeight:"600",marginLeft:"10px",marginTop:"20px"}}>ข้อมูลงานแต่ง</Typography>
+                        <Link href="/wedding-info">
                         <Box sx={{marginTop:"10px"}}>
                             <DashboardList sx={{backgroundColor:DashboardList1?"":"#FCD5CE"}}
-                            onClick={()=>setDashboardList1(prev=>{
-                                if(prev==false){
-                                    setDashboardList2(false)
-                                    setDashboardList3(false)
-                                    setDashboardUserInfo(false)
-                                    return true
-                                }
-                                else{
-                                    return "HELLO"
-                                }
-                            })}>
+                            onClick={SelectList1}>
                                 {DashboardList1? <Box sx={{height:"100%",width:"10px",backgroundColor:"#F08080"}}></Box>:""}
-                                <Box >
+                                <Box>
                                     <img className={classes.dashboardIcon} src="/flatIcon/wedding-rings.png"/>
                                 </Box>
                                 <Box sx={{display:"flex",flexDirection:"column",marginTop:"8px",marginLeft:"10px"}}>
@@ -107,19 +175,11 @@ export default function LargeSidebar(){
                                 </Box>
                             </DashboardList>
                         </Box>
+                        </Link>
+                        <Link href="/money">
                         <Box sx={{marginTop:"10px"}}>
                             <DashboardList sx={{backgroundColor:DashboardList2?"":"#FCD5CE"}}
-                            onClick={()=>setDashboardList2(prev=>{
-                                if(prev==false){
-                                    setDashboardList1(false)
-                                    setDashboardList3(false)
-                                    setDashboardUserInfo(false)
-                                    return true
-                                }
-                                else{
-                                    return "HELLO"
-                                }
-                            })}>
+                            onClick={SelectList2}>
                                 {DashboardList2? <Box sx={{height:"100%",width:"10px",backgroundColor:"#F08080"}}></Box>:""}
                                 <Box >
                                     <img className={classes.dashboardIcon} src="/flatIcon/money-bag.png"/>
@@ -130,19 +190,11 @@ export default function LargeSidebar(){
                                 </Box>
                             </DashboardList>
                         </Box>
+                        </Link>
+                        <Link href="/wish">
                         <Box sx={{marginTop:"10px"}}>
                             <DashboardList sx={{backgroundColor:DashboardList3?"":"#FCD5CE"}} 
-                            onClick={()=>setDashboardList3(prev=>{
-                                if(prev==false){
-                                    setDashboardList1(false)
-                                    setDashboardList2(false)
-                                    setDashboardUserInfo(false)
-                                    return true
-                                }
-                                else{
-                                    return "HELLO"
-                                }
-                            })}>
+                            onClick={SelectList3}>
                                 {DashboardList3? <Box sx={{height:"100%",width:"10px",backgroundColor:"#F08080"}}></Box>:""}
                                 <Box >
                                     <img className={classes.dashboardIcon} src="/flatIcon/wish-list.png"/>
@@ -153,6 +205,7 @@ export default function LargeSidebar(){
                                 </Box>
                             </DashboardList>
                         </Box>
+                        </Link>
                         <Typography variant="h6" sx={{fontSize:"14px",fontWeight:"600",marginLeft:"10px",marginTop:"20px"}}>ประวัติการใช้งาน</Typography>
                         <Box id="userHistory"
                         sx={{height:"200px",width:"100%",backgroundColor:"#FCD5CE",borderRadius:"4px",overflow:"hidden",overflowY:"scroll"}}>
