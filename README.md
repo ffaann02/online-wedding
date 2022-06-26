@@ -1,2 +1,2 @@
 # Closed!!!
-## Merged with "Paperless" web application project
+## This project is not being developed further.
